@@ -1,0 +1,73 @@
+﻿@model Detetive.Aplicacao.IndexModel
+@{
+    ViewBag.Title = "Início";
+}
+
+<div class="jumbotron">
+    <h1>DETETIVE.NET</h1>
+    <p class="lead">O empresário Sean Bean foi assassinado e o corpo dele foi deixado na frente da delegacia de polícia. O Inspetor Jacques Clouseau foi escolhido para investigar este caso. Após uma série de investigações, ele organizou uma lista com prováveis assassinos, os locais do crime e quais armas poderiam ter sido utilizadas.</p>
+    <p><button id="btIniciar" class="btn btn-primary btn-lg">Iniciar nova investigação</button></p>
+</div>
+
+<div id="divOpcoes" class="row opcoes">
+    <div id="divOpSuspeitos" class="col-md-4 opcoes" style="display:none;">
+        <h2>Quem você acha que foi?</h2>
+        <ul>
+            @{
+                foreach (var suspeito in Model.lstSuspeitos)
+                {
+                    <li>
+                        <button id="btSuspeito_@suspeito.Id" onclick="detetive.Index.btSuspeito_Click(@suspeito.Id)" class="btn btn-warning btn-lg">@suspeito.Descricao</button>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+    <div id="divOpLocais" class="col-md-4 opcoes" style="display:none;">
+        <h2>Onde isso aconteceu?</h2>
+        <ul>
+            @{
+                foreach (var local in Model.lstLocais)
+                {
+                    <li>
+                        <button id="btLocal_@local.Id" onclick="detetive.Index.btLocal_Click(@local.Id)" class="btn btn-info btn-lg">@local.Descricao</button>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+    <div id="divOpArmas" class="col-md-4 opcoes" style="display:none;">
+        <h2>E a arma do crime?</h2>
+        <ul>
+            @{
+                foreach (var arma in Model.lstArmas)
+                {
+                    <li>
+                        <button id="btArma_@arma.Id" onclick="detetive.Index.btArma_Click(@arma.Id)" class="btn btn-danger btn-lg">@arma.Descricao</button>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</div>
+
+<div id="divProcessandoInformacao" style="display:none;">
+    <div class="alert alert-warning" role="alert">
+        Nossos computadores ultra potentes estão analisando suas pistas....
+    </div>
+</div>
+
+<div id="divResultado" style="display:none;">
+    <div class="alert" role="alert">
+        <label id="lblResultado">...</label>
+    </div>
+    <p><button id="btTentarDeNovo" class="btn btn-warning btn-lg" onclick="detetive.Index.btTentarDeNovo_Click()" style="display:none;">Tentar de novo!</button></p>
+</div>
+
+
+<script>
+    $(function () {
+        detetive.Index.inicializarJogo(@Html.Raw(JsonConvert.SerializeObject(Model.resposta)));
+    });
+</script>
+

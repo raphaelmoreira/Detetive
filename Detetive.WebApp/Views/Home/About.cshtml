@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Sobre";
+}
+<h2>@ViewBag.Title</h2>
+<h3>Resumo</h3>
+<p>
+    O projeto está organizado com a mistura de TDD e DDD (sugestão):
+    <ul>
+        <li>Interface: aplicação web (responsiva para celular)</li>
+        <li>Dominio: entidades</li>
+        <li>Respositório: acesso a banco</li>
+        <li>Auxiliar: seria o ultilitários do sistema</li>
+        <li>Aplicacao: gerencia as regras</li>
+    </ul>
+</p>
+
+<hr />
+
+<h3>Interface</h3>
+<p>
+    Utilizado arquitetura MVC com WebAPI pela arquitetura mais limpa e objetiva. Bootstrap para UI e suporte responsivo (desktop ou celular) e jQuery para controle do lado do cliente.
+</p>
+
+<h3>Dominio</h3>
+<p>
+    Responsável por armanezar as entidades utilizadas no sistema e servirem de base para o banco de dados (CodeFirst). Não foi o caso, mas ela também seria responsável pelas regras de get;set. A ideia é que ela seja auto suficiente em suas funções. Ou seja, as regras básicas (CRUD) ficariam aqui.
+</p>
+
+<h3>Repositório</h3>
+<p>
+    Utilizado para controle do banco de dados utilizando o Entity Framework pela sua agilidade, indiferença a banco e uso do Migrations
+</p>
+
+<h3>Auxiliar</h3>
+<p>
+    Nada de especial a não ser funções genéricas para uso no sistema
+</p>
+
+<h3>Aplicação</h3>
+<p>
+    Faz a ponte de acesso entre a interface e restante do sistema
+</p>
+
+<h3>Observações</h3>
+<p>
+    Fiz alguns testes de exemplo, mas como não foi abordado CRUD, não servem de muita coisa. Mas é mais uma sugestão de arquitetura mesmo (desenvolver testes antes da aplicação)
+</p>
+<p>
+    Não fiz nenhum app mobile. Utilizaria o mesmo aqui no navegador. Se fosse necessário uma aplicação dedicada, utilizaria Phonegap (html/javascript), porém, não trabalho mais com isso.
+</p>
+
+<p>
+    Não fiz nenhum desenho da arquitetura, pois não há complexidade nenhuma nela além do que já foi descrito acima.
+</p>
